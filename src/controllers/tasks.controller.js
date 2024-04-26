@@ -1,46 +1,38 @@
+import { TasksRepository } from "../repositories/tasks.repository.js"
+
 export class TasksController {
+    static instance
+
     constructor() {
-        this.tasks = [{
-            id: 1,
-            checked: false,
-            name: "Teste 1"
-        }, {
-            id: 2,
-            checked: false,
-            name: "Teste 2"
-        }]
-        this.lastId = 2
+        this.repository = new TasksRepository()
     }
 
-    getAllTasks = (req, res) => {
-        return res.json(this.tasks)
+    getAllTasks = async (req, res) => {
+        const allTasks = await this.repository.getTasks()
+        return res.json(allTasks)
     }
 
-    createTask = (req, res) => {
+    createTask = async (req, res) => {
         const task = req.body
 
-        this.lastId++
-        task.id = this.lastId
-        this.tasks.push(task)
+        const createdTask = await this.repository.createTask(task)
 
-        return res.json(task)
+        return res.json(createdTask)
     }
 
-    updateTask = (req, res) => {
+    updateTask = async (req, res) => {
         const id = Number(req.params.id)
-        const taskReq = req.body
+        const task = req.body
 
-        const taskUpdated = this.tasks.find(task => task.id === id)
-        taskUpdated.name = taskReq.name ? taskReq.name : taskUpdated.name
-        taskUpdated.checked = typeof taskReq.checked == 'boolean' ? taskReq.checked : taskUpdated.checked
+        const taskUpdated = await this.repository.updateTask({ id, ...task })
 
         return res.json(taskUpdated)
     }
 
-    deleteTask = (req, res) => {
+    deleteTask = async (req, res) => {
         const id = Number(req.params.id)
 
-        this.tasks = this.tasks.filter(task => task.id != id)
+        await this.repository.deleteTask(id)
 
         return res.json({ ok: true })
     }

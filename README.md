@@ -44,7 +44,7 @@
 - Modelagem de base dados com ORM Prisma
 - Static Public do Express para desenvolvimento do frontend em conjunto com o backend (`app.use(express.static('public'))`)
 - Biblioteca body-parser que serve como um middleware do backend para analisar as informações do body enviadas do frontend para backend.
-- Diversas linhas de comandos utilizadas no decorrer do desenvolvimento, [**confira documentação aqui**](.github/docs/COMMANDS-LINE.md)
+- Diversas linhas de comandos utilizadas no decorrer do desenvolvimento, [**confira documentação aqui**](.github/docs/COMMAND-LINES.md)
 
 ## 🖥️ Como executar localmente? <a name = "running_pt"></a>
 
@@ -110,7 +110,7 @@ npm run dev
 - Database modeling with ORM Prisma
 - Express Static Public for frontend development in conjunction with the backend (`app.use(express.static('public'))`)
 - Body-parser library that serves as a backend middleware to parse body information sent from the frontend to the backend.
-- Several command lines used during development, [**check documentation here**](.github/docs/COMMANDS-LINE-en-US.md)
+- Several command lines used during development, [**check documentation here**](.github/docs/COMMAND-LINES-en-US.md)
 
 ## 🖥️ How to run locally? <a name = "running_en"></a>
 
@@ -132,7 +132,7 @@ DATABASE_URL="file:./dev.db"
 
 Create the schema for the database according to the .env file:
 ```
-npx prism migrate dev
+npx prisma migrate dev
 ```
 
 Run the project:

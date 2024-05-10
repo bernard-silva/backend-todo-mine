@@ -32,19 +32,19 @@ npm install body-parser
 ```
 ORM for Database Modeling:
 ```
-npm install prism --save-dev
+npm install prisma --save-dev
 ```
 Install the Prisma client:
 ```
 npm install @prisma/client --save
 ```
-Initialize the prism:
+Initialize the prisma:
 ```
-npx prism init
+npx prisma init
 ```
 After creating the database modeling, create the schema:
 ```
-npx prism migrate dev
+npx prisma migrate dev
 ```
 Run the project:
 ```
